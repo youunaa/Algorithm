@@ -5,7 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.stream.Collectors;
 
-class Resolve001 {
+public class Resolve001 {
     
     public void execute() {
         String[] id_list = {"muzi", "frodo", "apeach", "neo"}; 
@@ -16,7 +16,7 @@ class Resolve001 {
     }
 
     /**
-     * 해시 알고리즘
+     * 해시 - 신고 결과 받기
      * @param id_list
      * @param report
      * @param k

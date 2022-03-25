@@ -1,15 +1,23 @@
 package coding.test.time;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 public class Timer {
-
-    private long currentTime = System.currentTimeMillis();
-
+    
     public void execute() {
-        System.out.println("[info] " + currentTime);
+        DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss.SSS");
+        Date date = new Date();
+        
+        System.out.println("[" + dateFormat.format(date) + "]");
     }
-
+    
     public void clear() {
-        System.out.println("[info] " + currentTime);
+        DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss.SSS");
+        Date date = new Date();
+        
+        System.out.println("[" + dateFormat.format(date) + "]");
     }
     
 }
