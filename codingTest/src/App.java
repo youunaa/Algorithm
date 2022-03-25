@@ -1,13 +1,12 @@
 
-import study.equals;
+import study.Equals;
 
 public class App {
     
-    public static equals eq = new equals();
+    public static Equals eq = new Equals();
 
     public static void main(String[] args) throws Exception {
         eq.execute();
-        // answ_002.execute();
     }
 
 }
