@@ -1,21 +1,15 @@
 package coding.test.time;
 
-class Timer {
+public class Timer {
 
-    private long startTime = System.currentTimeMillis();
-    private long estimatedTime = System.currentTimeMillis() - startTime;
+    private long currentTime = System.currentTimeMillis();
 
     public void execute() {
-        System.out.println("startTime : " + startTime);
-        System.out.println("estimatedTime : " + estimatedTime);
+        System.out.println("[info] " + currentTime);
     }
 
-    public void setStartTime(long time) {
-        startTime = time;
-    }
-
-    public void setEndTime(long time) {
-        estimatedTime = time;
+    public void clear() {
+        System.out.println("[info] " + currentTime);
     }
     
 }

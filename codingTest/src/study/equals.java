@@ -1,23 +1,39 @@
 package study;
 
-public class Equals {
+import coding.test.time.Timer;
+
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
+import java.util.stream.Collectors;
+
+public class Equals extends Timer {
     
     public void execute() {
-        StringCompare();
+        super.execute();
+
+        test();
+        
+        super.clear();
     }
 
-    // String 비교 방법
-    public void StringCompare() {
-        String a = "aa";
-		byte[] bb = new byte[] {'l','e'};
-		String b = new String(bb);
+    public int[] test() {
+        String[] id_list = {"muzi", "frodo", "apeach", "neo"}; 
+        String[] report = {"muzi frodo","apeach frodo","frodo neo","muzi neo","apeach muzi"}; 
+        int k = 2;
 
-		// 01. == : String 간의 비교에는 사용할 수 있으나, byte[]를 기반으로 생성된 String 등의 비교에는 적절하지 않다.
-		System.out.println(a == b);	// false
-        // 02. equals : 순수하게 문자열을 비교한다.
-        System.out.println(a.equals(b)); // true	
-        // 03. intern() + == : 주소값을 동일하게 변경해 준다. case 1과 같은 상황에서도 주소값 비교가 아닌, 문자열 비교를 가능하게 한다.
-        System.out.println(a == b.intern()); // true	
+        List<String> list = Arrays.stream(report).distinct().collect(Collectors.toList());
+        HashMap<String, Integer> count = new HashMap<>();
+        for (String s : list) {
+            String target = s.split(" ")[1];
+            count.put(target, count.getOrDefault(target, 0) + 1);
+        }
+
+        return Arrays.stream(id_list).map(_user -> {
+            final String user = _user;
+            List<String> reportList = list.stream().filter(s -> s.startsWith(user + " ")).collect(Collectors.toList());
+            return reportList.stream().filter(s -> count.getOrDefault(s.split(" ")[1], 0) >= k).count();
+        }).mapToInt(Long::intValue).toArray();
     }
 
 }
