@@ -1,5 +1,7 @@
 
-class Answer2 {
+package coding.test.resolve;
+
+class Resolve002 {
 
     public void execute() {
         int[] answers = {1,2,3,4,5,3,2,4,2,5,9,1,2}; 

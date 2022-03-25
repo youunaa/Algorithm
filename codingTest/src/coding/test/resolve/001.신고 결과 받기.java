@@ -1,9 +1,11 @@
+package coding.test.resolve;
+
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.stream.Collectors;
 
-class Solution {
+class Resolve001 {
     
     public void execute() {
         String[] id_list = {"muzi", "frodo", "apeach", "neo"}; 
