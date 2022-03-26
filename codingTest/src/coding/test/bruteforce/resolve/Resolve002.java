@@ -1,4 +1,4 @@
-package coding.test.resolve;
+package coding.test.bruteforce.resolve;
 
 public class Resolve002 {
 

@@ -1,4 +1,4 @@
-package coding.test.solve;
+package coding.test.bruteforce.solve;
 
 import coding.test.time.Timer;
 

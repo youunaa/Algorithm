@@ -1,27 +1,28 @@
-package study;
-
-import coding.test.time.Timer;
+package coding.test.hash.resolve;
 
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class Equals extends Timer {
+public class Resolve001 {
     
     public void execute() {
-        super.execute();
-
-        test();
-        
-        super.clear();
-    }
-
-    public int[] test() {
         String[] id_list = {"muzi", "frodo", "apeach", "neo"}; 
         String[] report = {"muzi frodo","apeach frodo","frodo neo","muzi neo","apeach muzi"}; 
         int k = 2;
 
+        solution(id_list, report, k);
+    }
+
+    /**
+     * 해시 - 신고 결과 받기
+     * @param id_list
+     * @param report
+     * @param k
+     * @return
+     */
+    public int[] solution(String[] id_list, String[] report, int k) {
         List<String> list = Arrays.stream(report).distinct().collect(Collectors.toList());
         HashMap<String, Integer> count = new HashMap<>();
         for (String s : list) {
@@ -35,5 +36,5 @@ public class Equals extends Timer {
             return reportList.stream().filter(s -> count.getOrDefault(s.split(" ")[1], 0) >= k).count();
         }).mapToInt(Long::intValue).toArray();
     }
-
+    
 }
