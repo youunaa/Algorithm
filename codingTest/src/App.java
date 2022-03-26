@@ -1,14 +1,12 @@
-
-import study.Equals;
-import coding.test.solve.Solve003;
+import coding.test.solve.Solve004;
 
 public class App {
     
     // public static Equals eq = new Equals();
-    public static Solve003 sol3 = new Solve003();
+    public static Solve004 sol4 = new Solve004();
 
     public static void main(String[] args) throws Exception {
-        sol3.execute();
+        sol4.execute();
     }
 
 }
