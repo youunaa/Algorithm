@@ -11,7 +11,6 @@ public class Solve001 {
     }
 
     /**
-     * 해시 - 신고 결과 받기
      * @param id_list
      * @param report
      * @param k
