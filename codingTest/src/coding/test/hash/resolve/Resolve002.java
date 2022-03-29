@@ -1,10 +1,10 @@
-package coding.test.hash.solve;
+package coding.test.hash.resolve;
 
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 
-public class Solve002 {
+public class Resolve002 {
 
     public void execute() {
         String[] participant = { "mislav", "stanko", "mislav", "ana" };
@@ -22,7 +22,6 @@ public class Solve002 {
     public String solution(String[] participant, String[] completion) {
         String answer = "";
         Map<String, Integer> map = new HashMap<>();
-        
         for (String player : participant) {
             map.put(player, map.getOrDefault(player, 0) + 1);
         }
@@ -30,12 +29,16 @@ public class Solve002 {
             map.put(player, map.get(player) - 1);
         }
 
-        for(String key : map.keySet()) {
-            if(map.get(key) != 0) {
-                answer = key;
+        Iterator<Map.Entry<String, Integer>> iter = map.entrySet().iterator();
+        
+        while (iter.hasNext()) {
+            Map.Entry<String, Integer> entry = iter.next();
+            if (entry.getValue() != 0) {
+                answer = entry.getKey();
                 break;
             }
         }
+        
         return answer;
     }
 

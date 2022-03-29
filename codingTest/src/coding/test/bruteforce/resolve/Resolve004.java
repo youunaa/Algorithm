@@ -29,12 +29,6 @@ public class Resolve004 extends Timer {
      */
     public int[] solution(int brown, int yellow) {
         int[] result = new int[2];
-        
-        // 어떤 사람은 가로를 증가시키면 가능한 빨간색 카펫이 1개 증가하고,
-        // 세로를 증가시키면 2배로 증가하는 특징을 이용해서 풀었고, 어떤 사람은 위처럼 사각형의 특징을 이용해 풀었다.
-
-        // 가로 길이는 세로 길이와 모든 타일의 개수에 따라 결정된다. 
-        // 예를 들어 6 * 4 격자 모양의 모든 타일의 개수는 12개이며 가로 길이 6은 12를 세로 길이 4로 나눈 값이 된다.
 
         int sum = brown + yellow;
         for (int y = 3; y <= Math.sqrt(brown + yellow); y++) {
@@ -47,8 +41,40 @@ public class Resolve004 extends Timer {
                 }
             }
         }
-
         return result;
     }
 
+    public int[] solution2(int brown, int yellow) {
+        int[] answer = new int[2];
+ 
+        int area = brown + yellow; // 전체 격자 개수
+ 
+        for (int i = 1; i <= area; i++) {
+            int row = i; // 세로
+            int col = area / row; // 가로
+ 
+            // 카펫의 가로 길이는 세로 길이와 같거나, 세로 길이보다 길다.
+            if (row > col)
+                continue;
+ 
+            if ((row - 2) * (col - 2) == yellow) {
+                answer[0] = col;
+                answer[1] = row;
+                return answer;
+            }
+ 
+        }
+        return answer;
+    }
+    // 일단 가로 세로의 길이부터 확인해보면 됩니다. 
+    // 가로의 블럭 갯수와 세로의 블럭 갯수는 겹치는 부분이 모서리의 4개이므로 
+    // 전체 brown의 갯수는 "2x + 2y - 4" 입니다.
+
+    // 그리고 가로축이 세로축보다 크거나 같다고 했으므로 
+    // 세로축을 작은 숫자부터 증가시키면서 가로축의 길이를 산정하면 됩니다. 
+    // red가 최소 1개가 있기 때문에 세로 블럭은 3개 미만이 될 수 없어 3부터 시작합니다. 
+
+    // 그리고 red의 갯수는 (x-2) * (y-2)이기 때문에 
+    // 산정된 가로 세로 블럭 수에서 계산된 red 갯수와, 
+    // 주어진 red 갯수를 비교해 같을 때는 찾으면 됩니다.
 }
