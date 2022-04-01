@@ -1,7 +1,6 @@
 package coding.test.hash.solve;
 
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.Map;
 
 public class Solve002 {
@@ -14,7 +13,7 @@ public class Solve002 {
     }
 
     /**
-     * 
+     * 해시 - 완주하지 못한 선수
      * @param participant 참가자 목록
      * @param completion  완주한 선수 목록
      * @return 완주하지 못한 한명의 선수
