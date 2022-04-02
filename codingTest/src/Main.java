@@ -5,8 +5,6 @@ import java.util.*;
 public class Main {
 
     public static void main(String[] args) throws IOException {
-        int testcase = 5;
-
         List<String> list = new ArrayList<>();
         list.add("5 50 50 70 80 100");
         list.add("7 100 95 90 80 70 60 50");
@@ -14,9 +12,14 @@ public class Main {
         list.add("3 70 90 81");
         list.add("9 100 99 98 97 96 95 94 93 91");
 
-        excuete(testcase, list);
+        excuete(list.size(), list);
     }
 
+    /**
+     * 수학 - 사칙연산
+     * @param testcase 
+     * @param list
+     */
     public static void excuete(int testcase, List<String> list) {
         // 각 케이스마다 한 줄씩 평균을 넘는 학생들의 비율을 반올림하여 소수점 셋째 자리까지 출력한다.
         for (String score : list) {
