@@ -56,6 +56,25 @@ public class Solve005 {
     }
 
     static class BaseBallData {
+        // BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        // String s = br.readLine();
+        // n = Integer.parseInt(s);
+        
+        // for (int i = 0; i < n; i++) {
+        //     StringTokenizer st = new StringTokenizer(br.readLine());
+            
+        //     long value = Long.parseLong(st.nextToken());
+        //     System.out.println(value);
+
+            // String type = st.nextToken(); // 집의 개수 n, 철수가 놀이를 할 횟수 q
+            // String prices = st.nextToken(); // n개의 집의 대문에 쓰여 있는 수 a 가 공백을 사이에 두고 순서
+            // String[] str = type.split(" ");
+            // int N = Integer.parseInt(str[0]);
+
+            // for (int j = 2; j < N + 1; j++) {
+                // String test = st.nextToken();
+                // }
+            // }
         int data;
         int strike;
         int ball;
