@@ -1,8 +1,5 @@
 package coding.test.hash.resolve;
 
-import java.util.HashMap;
-import java.util.Map;
-
 public class Resolve003 {
 
     public void execute() {
