@@ -1,39 +1,48 @@
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.StringTokenizer;
 
 public class Main {
 
-    public static void main(String[] args) {
-        int N = 4;
-        int K = 7;
-        String[][] objects = {
-                { "6", "13" },
-                { "4", "8" },
-                { "3", "6" },
-                { "5", "12" },
-        };
-        excuete(N, K, objects);
+    static Integer[][] dp;
+    static int[] W; // weight
+    static int[] V; // value
+
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        StringTokenizer st = new StringTokenizer(br.readLine(), " ");
+
+        int N = Integer.parseInt(st.nextToken());
+        int K = Integer.parseInt(st.nextToken());
+
+        W = new int[N];
+        V = new int[N];
+
+        dp = new Integer[N][K + 1];
+
+        for (int i = 0; i < N; i++) {
+            st = new StringTokenizer(br.readLine(), " ");
+            W[i] = Integer.parseInt(st.nextToken());
+            V[i] = Integer.parseInt(st.nextToken());
+        }
+
+        test(K, W, V);
     }
 
-    /**
-     * 
-     * @param n      물품의 수
-     * @param k      준서가 버틸 수 있는 무게
-     * @param values 무게, 가치
-     * @returns 배낭에 넣을 수 있는 물건들의 가치합의 최댓값을 출력한다.
-     */
-    private static void excuete(int n, int k, String[][] objects) {
-        // 준서는 최대 k kg까지 밖에 못버팀..
+    private static void test(int k, int[] w2, int[] v2) {
         Map<Integer, Integer> obj = new HashMap<>();
 
-        String[] m = new String[objects.length];
-        int i = 0;
+        String[] m = new String[w2.length];
 
-        for (String[] object : objects) {
-            m[i] = object[0];
-            obj.put(Integer.parseInt(object[0]), Integer.parseInt(object[1]));
+        int i = 0;
+        for (int w : w2) {
+            m[i] = String.valueOf(w);
+            obj.put(w, v2[i]);
             i++;
         }
 
@@ -42,7 +51,6 @@ public class Main {
         for (int j = 0; j < m.length; j++) {
             int sum = 0;
             for (int t = 1; t < m.length; t++) {
-
                 if (j != t) {
                     int m1 = Integer.parseInt(m[j]);
                     int m2 = Integer.parseInt(m[t]);
@@ -56,7 +64,7 @@ public class Main {
                 }
             }
         }
-        
+
         ArrayList<Integer> list = new ArrayList<>();
 
         for (int d : obj.keySet()) {
