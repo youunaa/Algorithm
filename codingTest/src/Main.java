@@ -1,44 +1,76 @@
-import java.util.Scanner;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
 
 public class Main {
 
 	public static void main(String[] args) {
-		Scanner in = new Scanner(System.in);
+		String[] id_list = { "muzi", "frodo", "apeach", "neo" };
+		String[] report = { "muzi frodo", "apeach frodo", "frodo neo", "muzi neo", "apeach muzi" };
+		int k = 2;
+		solution(id_list, report, k);
+	}
 
-		// 물품의 수
-		int n = in.nextInt();
+	/**
+	 * 
+	 * @param id_list
+	 * @param report
+	 * @param k
+	 * @return [2,1,1,0]
+	 */
+	public static int[] solution(String[] id_list, String[] report, int k) {
+		int[] answer = new int[id_list.length];
 
-		// 버틸 수 있는 무게
-		int k = in.nextInt();
+		HashSet<String> hashSet = new HashSet<>(Arrays.asList(report));
+		String[] resultArr = hashSet.toArray(new String[0]);
 
-		// 물품의 무게(0)와 가치(1)
-		int a[][] = new int[n + 1][2];
+		String[][] result = new String[resultArr.length][2];
 
-		// 행: 물품의 무게, 열: 1~k까지의 무게, 값: 물품의 가치 누적
-		int dp[][] = new int[n + 1][k + 1];
-
-		// 물품들의 무게와 가치 입력
-		for (int i = 1; i < n + 1; i++) {
-			a[i][0] = in.nextInt();
-			a[i][1] = in.nextInt();
+		int i = 0;
+		// 신고자 - 신고당한사람 레포트
+		for (String user : resultArr) {
+			String[] user1 = user.split(" ");
+			result[i][0] = user1[0];
+			result[i][1] = user1[1];
+			i++;
 		}
 
-		// 0행, 0열은 공백 인덱스로 비워둔다.
-		for (int i = 1; i < n + 1; i++) {
-			for (int j = 1; j < k + 1; j++) {
-				// 비교 무게 - 물품의 무게 >= 0 인 경우,
-				if (j - a[i][0] >= 0) {
-					// 이전 dp에 저장된 누적 가치와 자신의 가치+남은 무게의 가치 중 큰 값을 취한다.
-					dp[i][j] = Math.max(dp[i - 1][j], a[i][1] + dp[i - 1][j - a[i][0]]);
-				} else {
-					// 나머지는 이전 dp에 누적된 가치를 취한다.
-					dp[i][j] = dp[i - 1][j];
-				}
+		Map<String, Integer> map = new HashMap<>();
+
+		for (int j = 0; j < i; j++) {
+			map.put(result[j][1], map.getOrDefault(result[j][1], 0) + 1);
+		}
+
+		List<String> list = new ArrayList<>();
+
+		// 정지당할 회원 목록
+		for (String key : map.keySet()) {
+			if (map.get(key) >= k) {
+				list.add(key);
 			}
 		}
 
-		System.out.println(dp[n][k]);
+		Map<String, Integer> idMap = new HashMap<>();
 
-		in.close();
+		for (String name : id_list) {
+			idMap.put(name, 0);
+		}
+
+		for (int t = 0; t < i; t++) {
+			// tt는 정지당한사람
+			if (list.indexOf(result[t][1]) > -1) {
+				idMap.put(result[t][0], idMap.getOrDefault(result[t][0], 0) + 1);
+			}
+		}
+		int f =0;
+		for(String nn : id_list) {
+			answer[f] = idMap.get(nn);
+			f++;
+		}
+
+		return answer;
 	}
 }
