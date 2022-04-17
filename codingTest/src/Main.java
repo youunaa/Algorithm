@@ -1,32 +1,49 @@
-import java.util.HashMap;
-import java.util.Map;
+import java.util.Arrays;
 
 public class Main {
 
 	public static void main(String[] args) {
-		String s = "one4seveneight";
-		solution(s);
+		int n = 5;
+		int[] arr1 = { 9, 20, 28, 18, 11 };
+		int[] arr2 = { 30, 1, 21, 17, 28 };
+
+		// ["#####","# # #", "### #", "# ##", "#####"]
+		solution(n, arr1, arr2);
 	}
 
-	public static int solution(String s) {
-		Map<Integer,String> map = new HashMap<>();
-		map.put(0, "zero");
-		map.put(1, "one");
-		map.put(2, "two");
-		map.put(3, "three");
-		map.put(4, "four");
-		map.put(5, "five");
-		map.put(6, "six");
-		map.put(7, "seven");
-		map.put(8, "eight");
-		map.put(9, "nine");
+	public static String[] solution(int n, int[] arr1, int[] arr2) {
+		int[][] map1 = new int[n][n];
+		int[][] map2 = new int[n][n];
 
-		for(int key : map.keySet()) {
-			s = s.replaceAll(map.get(key), String.valueOf(key));
+		for (int i = 0; i < n; i++) {
+			String binaryStr1 = Integer.toBinaryString(arr1[i]);
+			String binaryStr2 = Integer.toBinaryString(arr2[i]);
+
+			if (binaryStr1.length() != n) {
+				binaryStr1 = String.format("%05d", Integer.parseInt(binaryStr1));
+			}
+			if (binaryStr2.length() != n) {
+				binaryStr2 = String.format("%05d", Integer.parseInt(binaryStr2));
+			}
+
+			for (int k = 0; k < n; k++) {
+				map1[i][k] = Integer.parseInt(binaryStr1.substring(k, k + 1));
+				map2[i][k] = Integer.parseInt(binaryStr2.substring(k, k + 1));
+			}
+		}
+		String[] answer = new String[n];
+
+		// 벽"("#") 1 , "공백" 부분을 0
+		for (int j = 0; j < n; j++) {
+			String res = "";
+			for (int t = 0; t < n; t++) {
+				res += (map1[j][t] == 1 || map2[j][t] == 1) ? "#" : " ";
+			}
+			answer[j] = res;
 		}
 
-        int answer = Integer.parseInt(s);
-        return answer;
-    }
+		System.out.println(Arrays.toString(answer));
+		return answer;
+	}
 
 }
