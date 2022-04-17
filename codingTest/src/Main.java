@@ -3,9 +3,9 @@ import java.util.Arrays;
 public class Main {
 
 	public static void main(String[] args) {
-		int n = 5;
-		int[] arr1 = { 9, 20, 28, 18, 11 };
-		int[] arr2 = { 30, 1, 21, 17, 28 };
+		int n = 6;
+		int[] arr1 = { 46, 33, 33 ,22, 31, 50 };
+		int[] arr2 = { 27 ,56, 19, 14, 14, 10};
 
 		// ["#####","# # #", "### #", "# ##", "#####"]
 		solution(n, arr1, arr2);
@@ -20,10 +20,10 @@ public class Main {
 			String binaryStr2 = Integer.toBinaryString(arr2[i]);
 
 			if (binaryStr1.length() != n) {
-				binaryStr1 = String.format("%05d", Integer.parseInt(binaryStr1));
+				binaryStr1 = String.format("%0"+n+"d", Integer.parseInt(binaryStr1));
 			}
 			if (binaryStr2.length() != n) {
-				binaryStr2 = String.format("%05d", Integer.parseInt(binaryStr2));
+				binaryStr2 = String.format("%0"+n+"d", Integer.parseInt(binaryStr2));
 			}
 
 			for (int k = 0; k < n; k++) {
