@@ -1,43 +1,32 @@
-import java.util.Stack;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Main {
 
 	public static void main(String[] args) {
-		int[][] board = {
-				{ 0, 0, 0, 0, 0 },
-				{ 0, 0, 1, 0, 3 },
-				{ 0, 2, 5, 0, 1 },
-				{ 4, 2, 4, 4, 2 },
-				{ 3, 5, 1, 3, 1 }
-		};
-		int[] moves = { 1, 5, 3, 5, 1, 2, 1, 4 };
-
-		solution(board, moves);
+		String s = "one4seveneight";
+		solution(s);
 	}
 
-	public static int solution(int[][] board, int[] moves) {
-		int answer = 0;
-		int width = board[0].length;
+	public static int solution(String s) {
+		Map<Integer,String> map = new HashMap<>();
+		map.put(0, "zero");
+		map.put(1, "one");
+		map.put(2, "two");
+		map.put(3, "three");
+		map.put(4, "four");
+		map.put(5, "five");
+		map.put(6, "six");
+		map.put(7, "seven");
+		map.put(8, "eight");
+		map.put(9, "nine");
 
-		Stack<Integer> stack = new Stack<>();
-		stack.push(0);
-
-		for (int move : moves) {
-			for (int j = 0; j < width; j++) {
-				if (board[j][move - 1] != 0) {
-					if (stack.peek() == board[j][move - 1]) {
-						stack.pop();
-						answer += 2;
-					} else {
-						stack.push(board[j][move - 1]);
-					}
-					board[j][move - 1] = 0;
-					break;
-				}
-			}
+		for(int key : map.keySet()) {
+			s = s.replaceAll(map.get(key), String.valueOf(key));
 		}
 
-		return answer;
-	}
+        int answer = Integer.parseInt(s);
+        return answer;
+    }
 
 }
