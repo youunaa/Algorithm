@@ -1,5 +1,4 @@
-import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.Stack;
 
 public class Main {
 
@@ -17,22 +16,27 @@ public class Main {
 	}
 
 	public static int solution(int[][] board, int[] moves) {
+		int answer = 0;
 		int width = board[0].length;
 
-		StringBuilder sb = new StringBuilder();
+		Stack<Integer> stack = new Stack<>();
+		stack.push(0);
 
 		for (int move : moves) {
 			for (int j = 0; j < width; j++) {
 				if (board[j][move - 1] != 0) {
-					String addItem = String.valueOf(board[j][move - 1]);
-					sb.append(addItem);
+					if (stack.peek() == board[j][move - 1]) {
+						stack.pop();
+						answer += 2;
+					} else {
+						stack.push(board[j][move - 1]);
+					}
 					board[j][move - 1] = 0;
 					break;
 				}
 			}
 		}
 
-		int answer = 0;
 		return answer;
 	}
 
