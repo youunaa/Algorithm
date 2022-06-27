@@ -1,4 +1,4 @@
-package coding.test.math.soleve;
+package src.coding.test.math.soleve;
 
 import java.io.IOException;
 import java.util.ArrayList;

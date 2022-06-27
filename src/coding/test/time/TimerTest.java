@@ -1,4 +1,4 @@
-package coding.test.time;
+package src.coding.test.time;
 
 class TimerTest extends Timer {
     

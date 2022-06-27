@@ -1,9 +1,10 @@
-package coding.test.bruteforce.resolve;
+package src.coding.test.bruteforce.resolve;
 
-import java.util.HashSet; 
+
+import src.coding.test.time.Timer;
+
+import java.util.HashSet;
 import java.util.Iterator;
-
-import coding.test.time.Timer;
 
 public class Resolve003 extends Timer {
     HashSet<Integer> numbersSet = new HashSet<>();

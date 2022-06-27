@@ -1,6 +1,7 @@
-package coding.test.bruteforce.resolve;
+package src.coding.test.bruteforce.resolve;
 
-import coding.test.time.Timer;
+
+import src.coding.test.time.Timer;
 
 public class Resolve004 extends Timer {
 

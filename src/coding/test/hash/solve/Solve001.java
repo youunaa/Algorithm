@@ -1,4 +1,4 @@
-package coding.test.hash.solve;
+package src.coding.test.hash.solve;
 
 public class Solve001 {
     

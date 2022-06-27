@@ -1,4 +1,4 @@
-package coding.test.hash.resolve;
+package src.coding.test.hash.resolve;
 
 import java.util.HashMap;
 import java.util.Iterator;

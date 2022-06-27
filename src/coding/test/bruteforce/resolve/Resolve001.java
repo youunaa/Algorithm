@@ -1,4 +1,4 @@
-package coding.test.bruteforce.resolve;
+package src.coding.test.bruteforce.resolve;
 
 import java.util.Arrays;
 import java.util.HashMap;
