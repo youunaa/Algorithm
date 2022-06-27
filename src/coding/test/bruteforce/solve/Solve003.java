@@ -1,6 +1,7 @@
 package coding.test.bruteforce.solve;
 
-import coding.test.time.Timer;
+
+import src.coding.test.time.Timer;
 
 public class Solve003 extends Timer {
 
