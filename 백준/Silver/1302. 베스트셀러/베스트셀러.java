@@ -18,10 +18,7 @@ public class Main {
         }
 
         // 가장 많이 팔린 책의 수
-        int max = 0;
-        for (String a : map.keySet()) {
-            max = Math.max(max, map.get(a));
-        }
+        Integer max = Collections.max(map.values());
 
         // 베스트 셀러 목록
         ArrayList<String> bestSeller = new ArrayList<String>(map.keySet());
