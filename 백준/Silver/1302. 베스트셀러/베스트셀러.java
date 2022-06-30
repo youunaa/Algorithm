@@ -9,17 +9,15 @@ public class Main {
     public static void main(String[] args) throws Exception {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         int N = Integer.parseInt(br.readLine());
+
         HashMap<String, Integer> map = new HashMap<String, Integer>();
         String str = new String();
 
         for (int i = 0; i < N; i++) {
             str = br.readLine();
-            if (map.containsKey(str)) {
-                map.replace(str, map.get(str) + 1);
-            } else {
-                map.put(str, 1);
-            }
+            map.put(str, map.getOrDefault(str, 1) + 1);
         }
+        
         int max = 0;
         for (String a : map.keySet()) {
             max = Math.max(max, map.get(a));
