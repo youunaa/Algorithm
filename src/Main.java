@@ -1,16 +1,25 @@
 package src;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
+import java.io.*;
+import java.util.Arrays;
 
 public class Main {
 
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        String s = br.readLine();
+        br.readLine();
+        String numStr = br.readLine();
 
-        System.out.println(s);
+        /**
+         * 1. n만큼 배열 지정
+         * 2. 배열끼리 합친다 sum 함수 사용
+         */
+        long[] longArray = Arrays.stream(numStr.split(""))
+                .mapToLong(Long::parseLong)
+                .toArray();
+
+        long sum = Arrays.stream(longArray).sum();
+        System.out.println(sum);
     }
 
 }
