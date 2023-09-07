@@ -1,25 +1,37 @@
 package src;
 
 import java.io.*;
-import java.util.Arrays;
+import java.util.HashMap;
 
 public class Main {
 
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        br.readLine();
-        String numStr = br.readLine();
+        // 사이트 개수, 찾아야하는 비밀번호
+        String[] siteInfo = br.readLine().split(" ");
 
-        /**
-         * 1. n만큼 배열 지정
-         * 2. 배열끼리 합친다 sum 함수 사용
-         */
-        long[] longArray = Arrays.stream(numStr.split(""))
-                .mapToLong(Long::parseLong)
-                .toArray();
+        int N = Integer.parseInt(siteInfo[0]);
+        int M = Integer.parseInt(siteInfo[1]);
 
-        long sum = Arrays.stream(longArray).sum();
-        System.out.println(sum);
+        HashMap<String, String> map = new HashMap<>();
+
+        // N만큼 입력받기
+        for (int i = 0; i < N; i++) {
+            String[] sitePwd = br.readLine().split(" ");
+            // key 는 사이트 url, value는 패스워드
+            map.put(sitePwd[0], sitePwd[1]);
+        }
+
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+
+        // M만큼 돌려서 value 찾기
+        for (int j = 0; j < M; j++) {
+            String key = br.readLine();
+            bw.write(map.get(key) + "\n");
+        }
+
+        bw.flush();
+        bw.close();
     }
 
 }
